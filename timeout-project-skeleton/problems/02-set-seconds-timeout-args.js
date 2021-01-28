@@ -22,7 +22,17 @@ setSecondsTimeoutArgs(function(arg1, arg2) {
 }, 0.7, 'hello', 'world'); // should print 'hello-world' after 700ms
 ***********************************************************************/
 
+setSecondsTimeoutArgs = (cb, delay, ...args) => {
+  //let x = cb(...args);
+  setTimeout(function () {
+    cb(...args);
+  }, delay * 1000);
+};
 
+function printSum(num1, num2, num3) {
+  console.log(num1 + num2 + num3);
+}
+setSecondsTimeoutArgs(printSum, 0.25, 5, 1, 4); // should print '10' after 250ms
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
