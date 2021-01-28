@@ -1,13 +1,22 @@
 /***********************************************************************
 Write a function `boundTimeout` that accepts a callback, a delay in
-milliseconds, and an object. The function should bind the callback to 
-the given object and set a timeout with the given delay using that 
+milliseconds, and an object. The function should bind the callback to
+the given object and set a timeout with the given delay using that
 bound callback.
 
-In addition to Mocha, we recommend that you test your code manually using 
+In addition to Mocha, we recommend that you test your code manually using
 node with the examples below.
 
 Examples:
+
+
+***********************************************************************/
+function boundTimeout(cb, delay, obj){
+
+  setTimeout(cb.bind(obj), delay)
+
+}
+
 
 function bark() {
   console.log(this.name + ' barks');
@@ -24,10 +33,6 @@ boundTimeout(bark, 500, dog); // prints 'Fido barks' after 500 ms
 boundTimeout(bark, 500, cat); // prints 'Sennacy barks' after 500 ms
 boundTimeout(meow, 500, dog); // prints 'Fido meowsss' after 500 ms
 boundTimeout(meow, 500, cat); // prints 'Sennacy meowsss' after 500 ms
-***********************************************************************/
-
-
-
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = boundTimeout;
