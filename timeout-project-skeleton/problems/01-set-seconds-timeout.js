@@ -23,7 +23,9 @@ setSecondsTimeout(function () {
 }, 1.4); // should print 'world' after 1400 milliseconds
 ***********************************************************************/
 
-
+setSecondsTimeout = (cb, delay) => {
+  setTimeout((cb) => {}, delay * 1000);
+};
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
