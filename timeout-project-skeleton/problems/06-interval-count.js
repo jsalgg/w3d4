@@ -9,14 +9,33 @@ Hint: utilize a 'closure' to your advantage
 In addition to Mocha, we recommend that you test your code manually using 
 node with the examples below.
 
+
+
 Example
+*/
+//code here
 
-intervalCount(function() {
-    console.log('hi');
-}, 500, 3); // prints 'hi' at 500ms intervals a total of 3 times
-***********************************************************************/
+intervalCount = (cb, delay, amt) => {
+  let x = setInterval(function () {
+    if (amt === 0) {
+      clearInterval(x);
+    }
+    cb();
+    amt -= 1;
+  }, delay);
 
+  amt--;
+  return x;
+};
 
+intervalCount(
+  function () {
+    console.log("hi");
+  },
+  500,
+  3
+); // prints 'hi' at 500ms intervals a total of 3 times
+//***********************************************************************/
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
