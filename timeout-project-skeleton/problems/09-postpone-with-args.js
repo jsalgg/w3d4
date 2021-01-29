@@ -12,16 +12,19 @@ Examples
 
 
 ***********************************************************************/
-function postponeWithArgs(cb, delay){
-  let innerFunc =
 
-  return innerFunc
-}
+postponeWithArgs = (cb, delay) => {
+  let innerFunc = (...args) =>
+    setTimeout(function () {
+      cb(...args);
+    }, delay);
+  return innerFunc;
+};
 
-const greet = (person) => console.log('Hello ' + person + '!');
+const greet = (person) => console.log("Hello " + person + "!");
 const slowGreet = postponeWithArgs(greet, 1000);
-slowGreet('Rose'); // prints 'Hello Rose!' after 1000 ms
-slowGreet('Alex'); // prints 'Hello Alex!' after 1000 ms
+slowGreet("Rose"); // prints 'Hello Rose!' after 1000 ms
+slowGreet("Alex"); // prints 'Hello Alex!' after 1000 ms
 
 const printSum = (num1, num2) => console.log(num1 + num2);
 const slowPrintSum = postponeWithArgs(printSum, 500);
